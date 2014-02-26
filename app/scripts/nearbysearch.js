@@ -1,6 +1,13 @@
 var nearbyBtn = document.getElementById('nearby');
 var resultsObj = {};
 
+var Filter = function(data){
+  function constructor(){};
+  constructor.prototype.categoryFilter = function(){ return _(data).pluck('types') }
+  return new constructor();
+}
+
+
 var options = {
   location: {},
   radius: '500',
@@ -16,13 +23,6 @@ function nearbySearch (clientLoc, options) {
   });
 }
 
-var Filter = function(data){
-  function constructor(){};
-  constructor.prototype.categoryFilter = function(){ return _(data).pluck('types') }
-  return new constructor();
-}
-
-
 function nearbyHandler (data) {
   resultsObj = new Filter(data);
   var names = _(data).pluck('name').map(function (val) {
@@ -31,10 +31,10 @@ function nearbyHandler (data) {
   for (var name in names) {
     console.log(names[name]);
   }
+  refreshView('results', resultsObj.categoryFilter(), false)
 }
 
 
 nearbyBtn.addEventListener('click', function (e) {
   nearbySearch(clientLoc, options);
-  refreshView('results', 'asdf', false)
 }, false);
