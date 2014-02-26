@@ -1,4 +1,5 @@
 var nearbyBtn = document.getElementById('nearby');
+var resultsObj = {};
 
 var options = {
   location: {},
@@ -15,12 +16,15 @@ function nearbySearch (clientLoc, options) {
   });
 }
 
-nearbyBtn.addEventListener('click', function (e) {
-  nearbySearch(clientLoc, options);
-}, false);
+var Filter = function(data){
+  function constructor(){};
+  constructor.prototype.categoryFilter = function(){ return _(data).pluck('types') }
+  return new constructor();
+}
+
 
 function nearbyHandler (data) {
-  console.log(data);
+  resultsObj = new Filter(data);
   var names = _(data).pluck('name').map(function (val) {
     return val;
   });
@@ -28,3 +32,9 @@ function nearbyHandler (data) {
     console.log(names[name]);
   }
 }
+
+
+nearbyBtn.addEventListener('click', function (e) {
+  nearbySearch(clientLoc, options);
+  refreshView('results', 'asdf', false)
+}, false);

@@ -1,0 +1,1 @@
+function _spID(a){var b={};return b=document.getElementById(a)}function refreshView(a,b,c){_spID(a).innerHTML=c?JSON.stringify(b):b}

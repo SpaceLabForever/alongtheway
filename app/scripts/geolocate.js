@@ -1,4 +1,4 @@
-var map, clientLoc;
+var map, clientLoc, outputData;
 
 function initialize() {
   var mapOptions = {
