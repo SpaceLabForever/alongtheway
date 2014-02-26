@@ -4,8 +4,9 @@ html
     title Your Location
     link(rel='stylesheet' href='/public/css/index.css')
   body
-    h1 Your Location
     button#nearby Nearby Search
+    button#dirs Directions
+    input#dest
     #map-canvas
 
     script(src='//localhost:35729/livereload.js')
@@ -14,3 +15,4 @@ html
     script(src='https://maps.googleapis.com/maps/api/js?libraries=places&sensor=true')
     script(src='/public/js/geolocate.js')
     script(src='/public/js/nearbysearch.js')
+    script(src='/public/js/directions.js')
