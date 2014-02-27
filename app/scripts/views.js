@@ -4,12 +4,17 @@ function _spID(id){
   return object;
 }
 
+
+// window.onload = function(){
+//   var list = "<% _.each(result, function(type, name, distance) { %> <ul><li></li></ul> <% }); %>";
+//   _spID('rl').innerHTML = _.template(list, {type: ['moe', 'curly', 'larry']});;
+
+// }
+
+
 function refreshView(id, viewOutput, stringify){
   stringify ? (_spID(id).innerHTML = JSON.stringify(viewOutput)) : (_spID(id).innerHTML = viewOutput);
 }
-
-
-
 
 //   this.prototype.categoryFilter = function(data){
 //     var filteredList;

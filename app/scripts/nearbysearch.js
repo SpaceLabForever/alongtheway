@@ -1,17 +1,41 @@
 var nearbyBtn = document.getElementById('nearby');
 var resultsObj = {};
 
+
 var Filter = function(data){
+
   function constructor(){};
-  constructor.prototype.categoryFilter = function(){ return _(data).pluck('types') }
+
+  constructor.prototype.getAllObjects = function(){
+    return data;
+  }
+
+  constructor.prototype.getObject = function(i){
+    return data[i];
+  }
+
+  constructor.prototype.displayAllCategories = function(){
+    return _.chain(_(data).pluck('types')).flatten().uniq().value();
+  }
+
+  constructor.prototype.getCategories = function(i){
+    return data[i]['types'];
+  }
+
+  constructor.prototype.getByCategory = function(){
+
+  }
+
   return new constructor();
 }
+
+//var resCatList = resultsObj.categoryFilter();
 
 
 var options = {
   location: {},
   radius: '500',
-  types: ['restaurant']
+  types: []
 };
 
 function nearbySearch (clientLoc, options) {
@@ -25,16 +49,17 @@ function nearbySearch (clientLoc, options) {
 
 function nearbyHandler (data) {
   resultsObj = new Filter(data);
+  console.log(data);
   var names = _(data).pluck('name').map(function (val) {
     return val;
   });
   for (var name in names) {
     console.log(names[name]);
   }
-  refreshView('results', resultsObj.categoryFilter(), false)
+  refreshView('results', resultsObj.displayAllCategories(), false)
 }
-
 
 nearbyBtn.addEventListener('click', function (e) {
   nearbySearch(clientLoc, options);
 }, false);
+
