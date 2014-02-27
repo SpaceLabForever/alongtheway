@@ -18,16 +18,20 @@ var Filter = function(data){
     return _.chain(_(data).pluck('types')).flatten().uniq().value();
   }
 
-  constructor.prototype.getCategories = function(i){
+  constructor.prototype.getObjectCategories = function(i){
     return data[i]['types'];
   }
 
   constructor.prototype.getByCategory = function(category){
+
+    var outputArr = [];
+
     for(var i in data){
       if(_.contains(data[i]['types'], category)){
-        console.log(data[i]);
+        outputArr.push(data[i]);
       }
     }
+    return outputArr;
   }
 
   return new constructor();
@@ -60,8 +64,10 @@ function nearbyHandler (data) {
   for (var name in names) {
     console.log(names[name]);
   }
-  refreshView('results', resultsObj.displayAllCategories(), false)
+  refreshView('results', renderView(), false)
 }
+
+
 
 nearbyBtn.addEventListener('click', function (e) {
   nearbySearch(clientLoc, options);
