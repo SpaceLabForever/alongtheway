@@ -22,8 +22,12 @@ var Filter = function(data){
     return data[i]['types'];
   }
 
-  constructor.prototype.getByCategory = function(){
-
+  constructor.prototype.getByCategory = function(category){
+    for(var i in data){
+      if(_.contains(data[i]['types'], category)){
+        console.log(data[i]);
+      }
+    }
   }
 
   return new constructor();
