@@ -5,30 +5,26 @@ function _spID(id){
 }
 
 var renderView = function(){
-
     var catList = resultsObj.displayAllCategories();
-
     var _T_list =  '';
-
     for(var i in catList){
-
-      _T_list += '<ul><li>Category: '+catList[i]+'s</li><ul>';
-
-      _.each(resultsObj.getByCategory(catList[i]), function(val){
+      var listResults = resultsObj.getByCategory(catList[i]);
+      _T_list += '<ul><li><div class="list-counter">'+listResults.length+'</div>'+catList[i]+'s</li><ul>';
+      _.each(listResults, function(val){
         _T_list += '<li>'+val['name']+'</li>';
       });
-
       _T_list += '</ul></ul>';
-
     }
-
     return _T_list;
-
 }
 
 
-//"<li>moe</li><li>curly</li><li>larry</li>"
 
 function refreshView(id, viewOutput, stringify){
   stringify ? (_spID(id).innerHTML = JSON.stringify(viewOutput)) : (_spID(id).innerHTML = viewOutput);
 }
+
+
+
+
+[{categoryName: [place1, place2, place3]}, {categoryName: [place1, place2, place3]}]

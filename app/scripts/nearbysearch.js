@@ -23,9 +23,7 @@ var Filter = function(data){
   }
 
   constructor.prototype.getByCategory = function(category){
-
     var outputArr = [];
-
     for(var i in data){
       if(_.contains(data[i]['types'], category)){
         outputArr.push(data[i]);
@@ -33,7 +31,6 @@ var Filter = function(data){
     }
     return outputArr;
   }
-
   return new constructor();
 }
 
