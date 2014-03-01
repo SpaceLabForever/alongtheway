@@ -1,1 +1,1 @@
-function _spID(a){var b={};return b=document.getElementById(a)}function refreshView(a,b,c){_spID(a).innerHTML=c?JSON.stringify(b):b}
+function _spID(a){var b={};return b=document.getElementById(a)}function refreshView(a,b,c){_spID(a).innerHTML=c?JSON.stringify(b):b}var renderView=function(){var a=resultsObj.displayAllCategories(),b="";for(var c in a)b+="<ul><li>Category: "+a[c]+"s</li><ul>",_.each(resultsObj.getByCategory(a[c]),function(a){b+="<li>"+a.name+"</li>"}),b+="</ul></ul>";return b};
