@@ -1,22 +1,72 @@
 doctype
-html
+html(lang='en-US')
   head
-    title Your Location
-    link(rel='stylesheet' href='/public/css/index.css')
+    title Along The Way
+    meta(charset='utf-8')
+    meta(http-equiv='Pragma', content='no-cache')
+    meta(http-equiv='Expires', content='-1')
+    meta(name='apple-mobile-web-app-capable', content='yes')
+    meta(name='apple-mobile-web-app-status-bar-style', content='black')
+    meta(name='viewport', content='width=device-width')
+    meta(name='viewport', content='initial-scale=1.0, maximum-scale=1.0')
+    meta(content='minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=no' name='viewport')
+    meta(name='description' content='Along The Way: Receive hints on places you might like to checkout along the way.')
+    meta(name='keywords' content='geolocation, navigation, navigator, search, find, land nav, along the way')
+    meta(name='author' content='SpaceLab')
+
+    link(rel='stylesheet' type='text/css' href='/public//css/snap.css')
+    link(rel='stylesheet' type='text/css' href='/public//css/styles.css')
+    link(rel='stylesheet' type='text/css' href='/public//css/drawer-menu.css')
+    //link(rel='stylesheet' type='text/css' href='/public/css/mapcanvas.css')
+    //link(rel='stylesheet' type='text/css' href='/public/css/left-drawer.css')
+    //link(rel='stylesheet' type='text/css' href='/public/css/right-drawer.css')
+
+    script(type='text/javascript' src='/public/js/modernizr.custom.js')
+    script(type='text/javascript' src='/public/js/snap.js')
   body
-    button#nearby Nearby Search
-    button#dirs Directions
-    input#dest
-    #map-canvas
+    .snap-drawers.line
+      .snap-drawer.snap-drawer-left.scrollable
+        .container
+          #mp-pusher.mp-pusher
+              nav#mp-menu.mp-menu
+                .mp-level
+                  ul#results
+              .scroller
+                .scroller-inner
+      .snap-drawer.snap-drawer-right.scrollable
+        h2 Queued Locations
+        h3 Food & Drinks
+        ul
+          li Starbucks
+          li Uptown Espresso
+          li Bartel's
+        section#options-panel
+          h2 Options
+          .options
+            label(for='radius') Radius
+            input#rangeinput.bar(type='range', min='500', max='3000', step='500', value='1', onchange='rangevalue.value=value; options.radius=value')
+            output#rangevalue(for='radius', name='radius') 500
+            button#nearby.button.rounded Nearby Search
+    #content.snap-content.line
+      #toolbar.line
+        button#open-left.togl
+        h1 Along The Way
+        a(href='#')
+        a(href='#')
+      #where-to.where-to.line
+        input#dest(type='text', placeholder='Where to?')
+        button#dirs.button Go
+      section#main-body.main-body.snap-content.line.scrollable
+        #map-canvas
 
     script(src='//localhost:35729/livereload.js')
     script(src='http://code.jquery.com/jquery.min.js')
     script(src='http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js')
     script(src='https://maps.googleapis.com/maps/api/js?libraries=places&sensor=true')
+    script(src='/public/js/classie.js')
+    script(src='/public/js/pushmenu.js')
     script(src='/public/js/geolocate.js')
     script(src='/public/js/nearbysearch.js')
     script(src='/public/js/directions.js')
     script(src='/public/js/views.js')
     //- script(src='/public/js/templates.js' type='template' id='templates')
-    #results
-    #rl

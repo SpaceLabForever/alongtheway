@@ -13,8 +13,9 @@ function getDirections (origin, dest) {
   var options = {
     origin: client,
     destination: dest,
-    travelMode: 'DRIVING'
+    travelMode: 'WALKING'
   };
+
   service.route(options, function (result, status) {
     var render = new google.maps.DirectionsRenderer();
     render.setMap(map);

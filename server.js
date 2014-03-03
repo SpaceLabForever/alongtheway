@@ -3,6 +3,11 @@ var express = require('express'),
     _ = require('underscore'),
     app = express();
 
+// remove this block for production
+app.configure('development', function () {
+    app.locals.pretty = true;
+});
+
 /* Configuration */
 app.configure(function () {
   app.set('view engine', 'jade');

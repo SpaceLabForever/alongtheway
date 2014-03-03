@@ -1,7 +1,6 @@
 var nearbyBtn = document.getElementById('nearby');
 var resultsObj = {};
 
-
 var Filter = function(data){
 
   function constructor(){};
@@ -23,9 +22,7 @@ var Filter = function(data){
   }
 
   constructor.prototype.getByCategory = function(category){
-
     var outputArr = [];
-
     for(var i in data){
       if(_.contains(data[i]['types'], category)){
         outputArr.push(data[i]);
@@ -33,7 +30,6 @@ var Filter = function(data){
     }
     return outputArr;
   }
-
   return new constructor();
 }
 
@@ -67,9 +63,12 @@ function nearbyHandler (data) {
   refreshView('results', renderView(), false)
 }
 
-
-
 nearbyBtn.addEventListener('click', function (e) {
   nearbySearch(clientLoc, options);
-}, false);
 
+  /*******  Instantiate PushMenu to build out the left-drawer menu system. setTimeout() to ensure that the
+  drawer items from views.js exist before building the menu out. Probably a better solution -DAP-  ******/
+  setTimeout(function(){
+    new PushMenu( document.getElementById('mp-menu'), document.getElementById('open-left'));
+  }, 600);
+}, false);
