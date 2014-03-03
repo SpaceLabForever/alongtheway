@@ -267,10 +267,12 @@
   font-size: 20rem; }
 
 .mp-level[data-level="1"] {
+  width: 340rem;
   position: absolute;
   z-index: -1; }
 
 .mp-level[data-level="2"] {
+  width: 290rem;
   position: absolute;
   z-index: 200; }
 

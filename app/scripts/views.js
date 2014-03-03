@@ -40,13 +40,17 @@ map.addEventListener('mousemove', function(event){
 /******  Enable Snap.js Menu for left and right drawers.  ******/
 var snapper = new Snap({
   element: document.getElementById('content'),
+  addBodyClasses: true,
   hyperextensible: false
 });
 
 document.getElementById('open-left').addEventListener('click', function(){
-  if( snapper.state().state=='left' ){
+  if( snapper.state().state == 'left' ){
     snapper.close();
   } else {
     snapper.open('left');
   }
 });
+
+
+

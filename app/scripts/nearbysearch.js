@@ -65,10 +65,9 @@ function nearbyHandler (data) {
 
 nearbyBtn.addEventListener('click', function (e) {
   nearbySearch(clientLoc, options);
-
   /*******  Instantiate PushMenu to build out the left-drawer menu system. setTimeout() to ensure that the
   drawer items from views.js exist before building the menu out. Probably a better solution -DAP-  ******/
   setTimeout(function(){
-    new PushMenu( document.getElementById('mp-menu'), document.getElementById('open-left'));
+    new PushMenu(document.getElementById('mp-menu'), document.getElementById('open-left'));
   }, 600);
 }, false);
