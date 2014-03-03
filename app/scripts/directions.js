@@ -20,5 +20,11 @@ function getDirections (origin, dest) {
     render.setMap(map);
     render.setDirections(result);
     console.log(result);
+    getPOIs(result);
   });
+}
+
+function getPOIs (route) {
+  var points = route.routes[0].overview_path;
+  console.log(points);
 }
