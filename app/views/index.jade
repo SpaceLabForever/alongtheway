@@ -34,11 +34,12 @@ html(lang='en-US')
           .scroller-inner
       .snap-drawer.snap-drawer-right.scrollable
         h2 Queued Locations
-        h3.category Food & Drinks
-        ul#queued
-        section#options-panel
+        div.line.category.box-effect
+            h3 Food & Drinks
+        ul.line#queued
+        section.line#options-panel
           h2 Options
-          .options
+          .options.line
             //label(for='radius') Radius
             //input#rangeinput.bar(type='range', min='500', max='3000', step='500', value='1', onchange='rangevalue.value=value; options.radius=value')
             //output#rangevalue(for='radius', name='radius') 500
