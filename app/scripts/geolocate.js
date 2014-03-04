@@ -6,6 +6,14 @@ if(navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(function(position) {
     clientLoc = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
+     var options = {
+      location: {},
+      radius: '500',
+      types: []
+    };
+    nearbySearch(clientLoc, options);
+    console.log("map loaded");
+
     var infowindow = new google.maps.Marker({
       map: map,
       position: clientLoc
@@ -58,10 +66,3 @@ function toggleBounce() {
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
-
-window.load = function () {
-    /****
-  Initializing the nearbySearch with the map */
-  console.log("map initialized");
-  nearbySearch(clientLoc, options);
-}
