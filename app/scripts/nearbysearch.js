@@ -68,6 +68,16 @@ nearbyBtn.addEventListener('click', function (e) {
   /*******  Instantiate PushMenu to build out the left-drawer menu system. setTimeout() to ensure that the
   drawer items from views.js exist before building the menu out. Probably a better solution -DAP-  ******/
   setTimeout(function(){
-    new PushMenu(document.getElementById('mp-menu'), document.getElementById('open-left'));
+    /*  Removing this functionality for now...
+    $(function(){
+      $('input[type=checkbox]').change(function() {
+        if ($(this).is(':checked')) {
+          console.log('checked');
+          $(this).closest("li").appendTo("#queued");
+        } else {
+          console.log('!checked');
+        }
+      });
+    });*/
   }, 600);
 }, false);

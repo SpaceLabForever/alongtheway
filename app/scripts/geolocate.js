@@ -1,53 +1,67 @@
-var map, clientLoc, outputData;
+'use strict';
+
+var map, marker, clientLoc, outputData;
+// Try HTML5 geolocation
+if(navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(function(position) {
+    clientLoc = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+    var infowindow = new google.maps.Marker({
+      map: map,
+      position: clientLoc
+    });
+
+    map.setCenter(clientLoc);
+  }, function() {
+    handleNoGeolocation(true);
+  });
+} else {
+  // Browser doesn't support Geolocation
+  handleNoGeolocation(false);
+}
 
 function initialize() {
   var mapOptions = {
     zoom: 15
   };
-  map = new google.maps.Map(document.getElementById('map-canvas'),
-      mapOptions);
 
-  // Try HTML5 geolocation
-  if(navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      clientLoc = new google.maps.LatLng(position.coords.latitude,
-                                       position.coords.longitude);
+  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-      var infowindow = new google.maps.Marker({
-        map: map,
-        position: clientLoc
-      });
+  marker = new google.maps.Marker({
+    map: map,
+    draggable: true,
+    animation: google.maps.Animation.DROP,
+    position: clientLoc
+  });
 
-      map.setCenter(clientLoc);
-    }, function() {
-      handleNoGeolocation(true);
-    });
-  } else {
-    // Browser doesn't support Geolocation
-    handleNoGeolocation(false);
-  }
+  google.maps.event.addListener(marker, 'click', toggleBounce);
+
+  google.maps.event.addListener(marker, 'click', function(event){
+
+    console.log("marker clicked!");
+  }, true);
+
+  //event at the end of a marker drag
+  google.maps.event.addListener(marker, "dragend", function(event) {
+    var lat = event.latLng.lat();
+    var lng = event.latLng.lng();
+  });
+
 }
 
-function handleNoGeolocation(errorFlag) {
-  var content;
-  if (errorFlag) {
-    content = 'Error: The Geolocation service failed.';
+function toggleBounce() {
+  if (marker.getAnimation() !== null) {
+    marker.setAnimation(null);
   } else {
-    content = 'Error: Your browser doesn\'t support geolocation.';
+    marker.setAnimation(google.maps.Animation.BOUNCE);
   }
-
-  var options = {
-    map: map,
-    position: new google.maps.LatLng(60, 105),
-    content: content
-  };
-
-  var infowindow = new google.maps.InfoWindow(options);
-  map.setCenter(options.position);
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
-$(document).ready(function () {
-  initialize();
-});
+window.load = function () {
+    /****
+  Initializing the nearbySearch with the map */
+  console.log("map initialized");
+  nearbySearch(clientLoc, options);
+}

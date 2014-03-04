@@ -17,6 +17,7 @@ html(lang='en-US')
     link(rel='stylesheet' type='text/css' href='/public//css/snap.css')
     link(rel='stylesheet' type='text/css' href='/public//css/styles.css')
     link(rel='stylesheet' type='text/css' href='/public//css/drawer-menu.css')
+    link(rel='stylesheet' type='text/css' href='/public//css/buttons.css')
     //link(rel='stylesheet' type='text/css' href='/public/css/mapcanvas.css')
     //link(rel='stylesheet' type='text/css' href='/public/css/left-drawer.css')
     //link(rel='stylesheet' type='text/css' href='/public/css/right-drawer.css')
@@ -27,26 +28,21 @@ html(lang='en-US')
     .snap-drawers.line
       .snap-drawer.snap-drawer-left.scrollable
         .container
-          #mp-pusher.mp-pusher
-              nav#mp-menu.mp-menu
-                .mp-level
-                  ul#results
-              .scroller
-                .scroller-inner
+          nav.mp-level
+            ul#results
+        .scroller
+          .scroller-inner
       .snap-drawer.snap-drawer-right.scrollable
         h2 Queued Locations
-        h3 Food & Drinks
-        ul
-          li Starbucks
-          li Uptown Espresso
-          li Bartel's
+        h3.category Food & Drinks
+        ul#queued
         section#options-panel
           h2 Options
           .options
-            label(for='radius') Radius
-            input#rangeinput.bar(type='range', min='500', max='3000', step='500', value='1', onchange='rangevalue.value=value; options.radius=value')
-            output#rangevalue(for='radius', name='radius') 500
-            button#nearby.button.rounded Nearby Search
+            //label(for='radius') Radius
+            //input#rangeinput.bar(type='range', min='500', max='3000', step='500', value='1', onchange='rangevalue.value=value; options.radius=value')
+            //output#rangevalue(for='radius', name='radius') 500
+            button#nearby.button.btn.btn-2.btn-2a.rounded Nearby Search
     #content.snap-content.line
       #toolbar.line
         button#open-left.togl
@@ -63,8 +59,6 @@ html(lang='en-US')
     script(src='http://code.jquery.com/jquery.min.js')
     script(src='http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js')
     script(src='https://maps.googleapis.com/maps/api/js?libraries=places&sensor=true')
-    script(src='/public/js/classie.js')
-    script(src='/public/js/pushmenu.js')
     script(src='/public/js/geolocate.js')
     script(src='/public/js/nearbysearch.js')
     script(src='/public/js/directions.js')

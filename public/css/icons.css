@@ -1,12 +1,4 @@
-@font-face {
-  font-family: 'linecons';
-  src: url("/public/fonts/linecons/linecons.eot");
-  src: url("/public/fonts/linecons/linecons.eot?#iefix") format("embedded-opentype"), url("/public/fonts/linecons/linecons.woff") format("woff"), url("/public/fonts/linecons/linecons.ttf") format("truetype"), url("/public/fonts/linecons/linecons.svg#linecons") format("svg");
-  font-weight: normal;
-  font-style: normal; }
-
 .icon:before {
-  font-family: 'linecons';
   speak: none;
   font-style: normal;
   font-weight: normal;
