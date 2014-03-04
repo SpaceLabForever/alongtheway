@@ -9,6 +9,24 @@
   display: block;
   left: auto; }
 
+.more-info {
+  width: 100px;
+  height: 100px;
+  background: #fff; }
+
+#detail {
+  font-size: 30rem; }
+
+/*info-drawer*/
+.snap-drawer-bottom {
+  position: fixed;
+  width: 800rem;
+  height: 800rem;
+  left: 300rem;
+  top: 200rem;
+  z-index: 999;
+  background: rgba(255, 255, 255, 0.8); }
+
 .snap-drawer-right h2 {
   padding: 20rem;
   color: #666;

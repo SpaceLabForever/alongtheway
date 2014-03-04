@@ -1,5 +1,20 @@
 'use strict';
 
+
+function _spID(id){
+  var object = {};
+  object = document.getElementById(id);
+  return object;
+}
+
+function _spCL(class){
+  var object = {};
+  object = document.getElementsByClassName(class);
+  return object;
+}
+
+
+
 var map, marker, clientLoc, outputData;
 // Try HTML5 geolocation
 if(navigator.geolocation) {

@@ -1,5 +1,6 @@
 var nearbyBtn = document.getElementById('nearby');
 var resultsObj = {};
+var placeResult = {};
 
 var Filter = function(data){
 
@@ -51,6 +52,21 @@ function nearbySearch (clientLoc, options) {
   });
 }
 
+function detailHandler(ref){
+  var request = {
+    reference: ref
+  };
+
+  service = new google.maps.places.PlacesService(map);
+  service.getDetails(request, callback);
+
+  function callback(place, status) {
+    if (status == google.maps.places.PlacesServiceStatus.OK) {
+      refreshView('detail', renderDetailView(place), false);
+    }
+  }
+}
+
 function nearbyHandler (data) {
   resultsObj = new Filter(data);
   console.log(data);
@@ -60,14 +76,17 @@ function nearbyHandler (data) {
   for (var name in names) {
     console.log(names[name]);
   }
-  refreshView('results', renderView(), false)
+  refreshView('results', renderListView(), false)
 }
 
-nearbyBtn.addEventListener('click', function (e) {
-  nearbySearch(clientLoc, options);
-  /*******  Instantiate PushMenu to build out the left-drawer menu system. setTimeout() to ensure that the
-  drawer items from views.js exist before building the menu out. Probably a better solution -DAP-  ******/
-  setTimeout(function(){
+
+
+function _invokeListListeners(){
+  $('.more-info').click(function(){
+    var ref = $(this).attr('data-ref');
+    detailHandler(ref);
+  })
+
     /*  Removing this functionality for now...
     $(function(){
       $('input[type=checkbox]').change(function() {
@@ -79,5 +98,19 @@ nearbyBtn.addEventListener('click', function (e) {
         }
       });
     });*/
-  }, 600);
-}, false);
+
+}
+
+
+$('#nearby').click(function(){
+  nearbySearch(clientLoc, options);
+})
+
+
+
+
+  /*******  Instantiate PushMenu to build out the left-drawer menu system. setTimeout() to ensure that the
+  drawer items from views.js exist before building the menu out. Probably a better solution -DAP-  ******/
+
+
+
