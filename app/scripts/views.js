@@ -42,7 +42,7 @@ map.addEventListener('mousemove', function(event){
   event.stopPropagation();
 },  false  );
 
-/******
+/*******
  Enable Snap.js Menu for left and right drawers.  ******/
 var snapper = new Snap({
   element: document.getElementById('content'),
@@ -58,9 +58,9 @@ snapper.on('start', function(){
   }
 });
 
-if(snapper.state().state == "closed" {
+// if(snapper.state().state == "closed" {
 
-}
+// }
 
 
 
@@ -75,7 +75,7 @@ if ($('input:radio').prop('checked', false)) {
 
 $('input[name=filterList]').change('checked', function() {
   $('.block').removeClass('hidden');
-}
+});
 
 $('.block').click(function(){
   $(this).addClass('hidden');
