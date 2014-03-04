@@ -171,7 +171,8 @@
   padding: 0rem 35rem;
   border-top: 1rem solid #ccc;
   border-bottom: 2rem solid #eee;
-  box-shadow: 0rem -2rem 10rem rgba(0, 0, 0, 0.15); }
+  box-shadow: 0rem -2rem 10rem rgba(0, 0, 0, 0.15);
+  overflow: hidden; }
 
 .where-to input {
   background: none;
@@ -182,7 +183,7 @@
 
 .where-to button {
   position: absolute;
-  top: 0;
+  top: -6px;
   right: 0;
   float: right; }
 

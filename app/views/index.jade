@@ -18,32 +18,29 @@ html(lang='en-US')
     link(rel='stylesheet' type='text/css' href='/public//css/styles.css')
     link(rel='stylesheet' type='text/css' href='/public//css/drawer-menu.css')
     link(rel='stylesheet' type='text/css' href='/public//css/buttons.css')
-    //link(rel='stylesheet' type='text/css' href='/public/css/mapcanvas.css')
-    //link(rel='stylesheet' type='text/css' href='/public/css/left-drawer.css')
-    //link(rel='stylesheet' type='text/css' href='/public/css/right-drawer.css')
 
     script(type='text/javascript' src='/public/js/modernizr.custom.js')
     script(type='text/javascript' src='/public/js/snap.js')
   body
     .snap-drawers.line
       .snap-drawer.snap-drawer-left.scrollable
-        .container
-          nav.mp-level
-            ul#results
-        .scroller
-          .scroller-inner
+        nav.mp-level.scroller
+            div.blocker.hidden
+            ul#results.scroller-inner
+
       .snap-drawer.snap-drawer-right.scrollable
         h2 Queued Locations
         div.line.category.box-effect
             h3 Food & Drinks
-        ul.line#queued
+        div.line.scroller
+        ul.line.scroller-inner#queued
         section.line#options-panel
           h2 Options
           .options.line
             //label(for='radius') Radius
             //input#rangeinput.bar(type='range', min='500', max='3000', step='500', value='1', onchange='rangevalue.value=value; options.radius=value')
             //output#rangevalue(for='radius', name='radius') 500
-            button#nearby.button.btn.btn-2.btn-2a.rounded Nearby Search
+            button#nearby.button Nearby Search
     #content.snap-content.line
       #toolbar.line
         button#open-left.togl
@@ -53,7 +50,7 @@ html(lang='en-US')
       #where-to.where-to.line
         input#dest(type='text', placeholder='Where to?')
         button#dirs.button Go
-      section#main-body.main-body.snap-content.line.scrollable
+      section#main-body.main-body.snap-content.line
         #map-canvas
 
     script(src='//localhost:35729/livereload.js')

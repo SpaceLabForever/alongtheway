@@ -58,6 +58,31 @@ snapper.on('start', function(){
   }
 });
 
+if(snapper.state().state == "closed" {
+
+}
+
+
+
+if ($('input:radio').prop('checked', false)) {
+  console.log('filter checked');
+  $(this).change(function(){
+    $('.mp-level.out').addClass('buried');
+    $('.mp-level .top-level input[type="radio"]:checked ~ .mp-level .sub-menu').addClass('active');
+    $('.block').removeClass('hidden');
+  });
+}
+
+$('input[name=filterList]').change('checked', function() {
+  $('.block').removeClass('hidden');
+}
+
+$('.block').click(function(){
+  $(this).addClass('hidden');
+  //$('input:radio').prop('checked', false);
+});
+
+
 document.getElementById('open-left').addEventListener('click', function(){
   if( snapper.state().state == 'left' ){
     snapper.close();
