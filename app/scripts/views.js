@@ -5,14 +5,16 @@ var renderListView = function(){
   var _T_list =  '';
   for(var i in catList){
     var listResults = resultsObj.getByCategory(catList[i]);
-    _T_list += '<li class="top-level"><input type="radio" name="filterList" id="' + catList[i] + '" />
-                <label for="' + catList[i] + '" data-counter="' + listResults.length + '">' +
-                catList[i] + '</label>';
-    _T_list += '<div class="filter-level"><ul class="sub-menu">';
+    var spaceIt = catList[i].split("_").join(" ");
+    _T_list += '<li class="top-level ' + catList[i] + '"><input type="radio" name="filterList" id="' + catList[i] + '" />
+                <label class="button" for="' + catList[i] + '" data-counter="' + listResults.length + '">' + spaceIt + '</label>';
+    _T_list += '<div class="filter-level"><ul data-category="' + catList[i] + '" class="sub-menu">';
     _.each(listResults, function(val){
       var prettyName = val['name'].replace(/\s+/g,"");
-      _T_list += '<li><input class="switch" type="checkbox" id="' +   prettyName + '" value="' +
-                 prettyName + '" />' + '<label for="' + prettyName +'">' + val['name'] + '</label><button data-ref="' + val['reference'] + '" class="more-info" type="button">i</button></li>';
+      _T_list += '<li><input class="switch" data-category="' + catList[i] + '" type="checkbox" id="' + catList[i] + "-"
+                  +  prettyName + '" value="' + prettyName + '" />' + '<label for="' + catList[i] + "-" + prettyName +'">'
+                  + val['name'] + '</label><button data-ref="' + val['reference']
+                  + '" class="more-info" type="button">i</button></li>';
     });
     _T_list += '</ul></div></li>';
   }
@@ -29,7 +31,7 @@ var renderDetailView = function(place){
   'Name' + place.name +
   'Rating' + place.rating +
   'Address' + place.formatted_address;
-  return _T_detail;
+  //return _T_detail;
 }
 
 function refreshView(id, viewOutput, stringify){

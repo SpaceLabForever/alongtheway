@@ -10,8 +10,8 @@
   left: auto; }
 
 .more-info {
-  width: 100px;
-  height: 100px;
+  width: 100rem;
+  height: 100rem;
   background: #fff; }
 
 #detail {
@@ -126,14 +126,14 @@
 #toolbar h1 {
   float: left;
   position: absolute;
-  top: 17rem;
+  top: 10rem;
   left: 100rem;
   border-bottom: 2rem;
-  font-size: 30rem;
+  font-size: 40rem;
   font-weight: 400;
   letter-spacing: 0rem;
-  color: #ACB6BC;
-  text-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.25); }
+  color: #fff;
+  text-shadow: 0rem 1rem 2rem #dadada; }
 
 #open-left {
   display: block;
@@ -180,6 +180,7 @@
 
 /* Where to? */
 .where-to {
+  overflow: hidden;
   position: relative;
   top: 70rem;
   left: 0rem;
@@ -200,23 +201,9 @@
 
 .where-to button {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: -10rem;
+  right: 1rem;
   float: right; }
-
-.button {
-  padding: 20rem;
-  font-size: 20rem;
-  color: #06192e;
-  text-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.25);
-  text-align: center;
-  outline: none;
-  border: none;
-  box-shadow: inset 0rem 0rem 10rem rgba(0, 0, 0, 0.15);
-  background: -ms-linear-gradient(top, #d2ff52 0%, #91e842 100%);
-  /* IE10+ */
-  background: linear-gradient(to bottom, #d2ff52 0%, #91e842 100%);
-  /* W3C */ }
 
 /* Styles for expanding "Search" input in the "Expanding" demo */
 .search {

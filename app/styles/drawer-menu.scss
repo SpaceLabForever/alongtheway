@@ -5,7 +5,7 @@
   z-index: 1;
   width: 340rem;
   height: 100%;
-  min-height: 1000rem;
+  min-height: 1900rem;
   overflow: hidden;
   background: #666;
   -webkit-transform: translate3d(-120%, 0, 0);
@@ -24,6 +24,17 @@
 
 .sub-menu {
   position: absolute;
+  top: 0;
+  left: 0;
+  width: 300rem;
+  height: 100%;
+  min-height: 1000rem;
+  padding: 20rem;
+  overflow: hidden;
+  list-style: none;
+  z-index: 100;
+  -webkit-transform: translate3d(-100%, 0, 0);
+  -webkit-transition: all 0.5s;
   -webkit-transform: translate3d(-100%, 0, 0);
   -webkit-transition: all 0.5s;
 }
@@ -49,7 +60,6 @@
 
 .push-menu .top-level label {
   font-size: 20rem;
-  font-color: #fff;
   display: block;
 }
 
@@ -57,7 +67,6 @@
   display: block;
   position: relative;
   font-size: 20rem;
-  color: #fff;
   text-decoration: none;
   padding-left: 55rem;
 }
@@ -86,23 +95,7 @@
   height: 1200rem;
 }
 
-.push-menu .top-level input[type="radio"] ~ .filter-level .sub-menu {
-  height: 100%;
-  min-height: 1000rem;
-  overflow: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 300rem;
-  padding: 20rem;
-  list-style: none;
-  z-index: 100;
-  -webkit-transform: translate3d(-100%, 0, 0);
-  -webkit-transition: all 0.5s;
-}
-
 .push-menu .top-level input[type="radio"]:checked ~ .filter-level  {
-
   width: 280rem;
   background: #666;
   -webkit-transform: translate3d(0, 0, 0);
@@ -118,7 +111,7 @@
 .filter-level .sub-menu li {
   font-size: 20rem;
   font-color: #fff;
-  padding: 20rem;
+  padding-right: 20rem
 }
 
 .filter-level .sub-menu li input[type="checkbox"] {
@@ -173,22 +166,29 @@ input[type="checkbox"]:checked + label {
 }
 
 .back-button {
-  opacity: 1;
-  background: rgba(0,0,0,.5);
-  box-shadow: inset 0rem 0rem 50rem rgba(0,0,0,.85);
   position: absolute;
-  z-index: -1;
+  z-index: 1;
   top: 0;
   left: 0;
   width: 340rem;
-  height: 1200rem;
+  height: 1900rem;
+  opacity: 1;
+  background: rgba(0,0,0,.5);
+  box-shadow: inset 0rem 0rem 50rem rgba(0,0,0,.85);
   -webkit-transition: all 0.5s;
   transition: all linear 0.5s;
 }
 
 .hidden {
   opacity: 0;
-  display:none;
+  display: none;
+  -webkit-transition: all 0.5s;
+  transition: all linear 0.5s;
+}
+
+.fadeOut {
+  pointer-events: none !important;
+  opacity: 0;
   -webkit-transition: all 0.5s;
   transition: all linear 0.5s;
 }

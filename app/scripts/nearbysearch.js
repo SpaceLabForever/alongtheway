@@ -51,7 +51,7 @@ function nearbyHandler (data) {
   });
 
   for (var name in names) {
-    console.log(names[name]);
+    console.log(_.uniq(names[name]));
   }
 
   refreshView('results', renderListView(), false);
@@ -64,14 +64,57 @@ function _invokeListListeners(){
   });
 
 /****** Probably a better solution -DAP-  ******/
-  $('.top-level input:radio').change(function() {
-    $('.back-button').removeClass('hidden');
-  });
+$('.top-level input:radio').change(function() {
+  $('.top-level > label').addClass('fadeOut');
+  $('.back-button').removeClass('hidden');
+});
 
-  $('.back-button').click(function(){
-    $(this).addClass('hidden');
-    $('.top-level input:checked').prop('checked', false);
-  });
+$('.back-button').click(function(){
+  $('.top-level > input:radio').prop('checked', false);
+  $('.top-level > label').removeClass('fadeOut');
+  $(this).addClass('hidden');
+  //need to add something to recalculate count based on how many listitems after populating the queue
+  //refreshList();
+});
+
+var moveLi = function(el) {
+    if(!el){
+        $('.sub-menu input:checkbox')
+                .change(function() {
+                    $(this).closest('li').appendTo('#queued');
+                    moveLi($(this));
+                    return false;
+                  });
+         } else {
+             $(el).unbind('change')
+                .change(function() {
+                    var moveTo = $(this).parents('ul')[0].id ==
+'.sub-menu input:checkbox' ? '#queued' :
+'.sub-menu';
+                 $(this).closest('li').appendTo(moveTo);
+                 moveLi($(this));
+                 return false;
+             });
+         }
+    };
+moveLi(null);
+
+
+
+/*
+$('.sub-menu input:checkbox').change(function() {
+  $(this).closest('li').appendTo('#queued').removeClass('fadeOut');
+});
+$('#queued input:checkbox').change(function() {
+  $(this).closest('li').appendTo('.sub-menu').removeClass('fadeOut');
+});
+
+$('#queued input:checkbox').change(function() {
+  if($(this).is(':not:checked')) {
+    var removeHyphen = .replace(/\s\d+)\s*-);
+    $(this).closest("li").appendTo(".sub-menu");
+  }
+});*/
 }
 
 $('#nearby').click(function(){

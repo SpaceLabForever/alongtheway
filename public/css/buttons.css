@@ -41,7 +41,7 @@
   padding: 20rem;
   font-size: 20rem;
   color: #06192e;
-  text-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.25);
+  text-shadow: 1rem 3rem 1rem rgba(0, 0, 0, 0.25);
   text-align: center;
   outline: none;
   border: none;
@@ -67,7 +67,7 @@
 
 /* Button 2a */
 .button {
-  border-radius: 0 0 5px 5px; }
+  border-radius: 3px 3px 5px 5px; }
 
 .button:hover {
   box-shadow: 0 4px #3f8401;
@@ -76,3 +76,6 @@
 .button:active {
   box-shadow: 0 0 #3f8401;
   top: 2px; }
+
+#nearby {
+  display: block; }
