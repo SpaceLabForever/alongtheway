@@ -1,3 +1,5 @@
+'use strict';
+
 var nearbyBtn = document.getElementById('nearby');
 var resultsObj = {};
 var placeResult = {};
@@ -63,56 +65,53 @@ function _invokeListListeners(){
     detailHandler(ref);
   });
 
-/****** Probably a better solution -DAP-  ******/
-$('.top-level input:radio').change(function() {
-  $('.top-level > label').addClass('fadeOut');
-  $('.back-button').removeClass('hidden');
-});
+  /****** Probably a better solution -DAP-  ******/
+  $('.top-level input:radio').change(function() {
+    $('.top-level > label').addClass('fadeOut');
+    $('.back-button').removeClass('hidden');
+  });
 
-$('.back-button').click(function(){
-  $('.top-level > input:radio').prop('checked', false);
-  $('.top-level > label').removeClass('fadeOut');
-  $(this).addClass('hidden');
-  //need to add something to recalculate count based on how many listitems after populating the queue
-  //refreshList();
-});
+  $('.back-button').click(function(){
+    $('.top-level > input:radio').prop('checked', false);
+    $('.top-level > label').removeClass('fadeOut');
+    $(this).addClass('hidden');
+    //need to add something to recalculate count based on how many listitems after populating the queue
+    //refreshList();
+  });
 
-var moveLi = function(el) {
-  if(!el){
-    $('.sub-menu input:checkbox').change(function() {
-      $(this).closest('li').appendTo('#queued');
-      moveLi($(this));
-      return false;
-    });
-  } else {
+
+  var moveLi = function(el) {
+
+    if(!el){
+      $('.switch:checkbox').change(function() {
+        var category = $('[data-category=' + $(this).data('category') + ']');
+        $(this).parent().appendTo('#queued');
+        moveLi($(this));
+        return false;
+      });
+    } else {
     $(el).unbind('change').change(function() {
-      var moveTo = $(this).parents('ul')[0].id ==
-      '.sub-menu' ? '#queued';
-      $(this).closest('li').appendTo(moveTo);
-      moveLi($(this));
+      var category = $('[data-category=' + $(this).data('category') + ']');
+      var moveTo = ('.sub-menu' + category);
+      $(this).parent().appendTo(moveTo);
+       moveLi($(this));
       return false;
-    });
-  }
-};
+      });
+    }
+  };
+  moveLi(null);
+  /*
+  $('.sub-menu .switch').click(function() {
+    console.log($(this));
+    $(this).closest('li').appendTo('#queued');
+  });
 
-moveLi(null);
-
-/*
-$('.sub-menu input:checkbox').change(function() {
-  $(this).closest('li').appendTo('#queued').removeClass('fadeOut');
-});
-$('#queued input:checkbox').change(function() {
-  $(this).closest('li').appendTo('.sub-menu').removeClass('fadeOut');
-});
-
-$('#queued input:checkbox').change(function() {
-  if($(this).is(':not:checked')) {
-    var removeHyphen = .replace(/\s\d+)\s*-);
-    $(this).closest("li").appendTo(".sub-menu");
-  }
-});*/
+  $('#queued .switch').click(function() {
+    console.log($(this).data('category'));
+    var moveTo = $;
+    $(this).closest('li').appendTo(moveTo);
+  });*/
 }
-
 $('#nearby').click(function(){
   nearbySearch(clientLoc);
 });
