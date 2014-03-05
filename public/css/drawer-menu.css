@@ -9,8 +9,12 @@
   min-height: 1000rem;
   overflow: hidden;
   background: #666;
-  -webkit-transform: translate3d(-100%, 0, 0);
+  -webkit-transform: translate3d(-120%, 0, 0);
   -webkit-transition: all 0.5s; }
+
+.filter-level {
+  background: #111;
+  box-shadow: 10px 0 10px rgba(0, 0, 0, 0.1); }
 
 .push-menu.out {
   -webkit-transform: translate3d(0, 0, 0);
@@ -87,9 +91,10 @@
   -webkit-transition: all 0.5s; }
 
 .push-menu .top-level input[type="radio"]:checked ~ .filter-level {
+  width: 280rem;
+  background: #666;
   -webkit-transform: translate3d(0, 0, 0);
-  -webkit-transition: all 0.5s;
-  width: 280rem; }
+  -webkit-transition: all 0.5s; }
 
 .push-menu .top-level input[type="radio"]:checked ~ .filter-level .sub-menu {
   -webkit-transform: translate3d(0, 0, 0);
