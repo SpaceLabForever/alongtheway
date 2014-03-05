@@ -1,4 +1,4 @@
-/* When 'GO' is clicked, get route from the client's 
+/* When 'GO' is clicked, get route from the client's
 current location to the destination entered */
 
 $('#dirs').click(function () {
@@ -30,7 +30,7 @@ function getDirections (origin, dest) {
   });
 }
 
-/* Pick out random points along the route and perform 
+/* Pick out random points along the route and perform
 nearby searches on them, putting the results in the drawer */
 
 function getPOIs (route) {
@@ -67,7 +67,7 @@ and return a list of names  */
 
 function nearbyHandler (data) {
   resultsObj = new Filter(data);
-  refreshView('results', renderView(), false);
+  refreshView('results', renderListView(), false);
   return _(data).pluck('name').map(function (val) { return val; });
 }
 

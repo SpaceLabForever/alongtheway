@@ -66,7 +66,7 @@ function _invokeListListeners(){
 
 
 $('#nearby').click(function(){
-  nearbySearch(clientLoc, options);
+  nearbySearch(clientLoc);
 })
 
 
