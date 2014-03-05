@@ -12,7 +12,7 @@ var renderListView = function(){
     _.each(listResults, function(val){
       var prettyName = val['name'].replace(/\s+/g,"");
       _T_list += '<li><input class="switch" type="checkbox" id="' +   prettyName + '" value="' +
-                 prettyName + '" />' + '<label for="' + prettyName +'">' + val['name'] + '</label><button data-ref="' + val['reference'] + '" class="more-info" type="button">i</button></li>';
+                 prettyName + '" />' + '<label for="' + prettyName +'">' + val['name'] + '<button data-ref="' + val['reference'] + '" class="more-info" type="button">i</button></label></li>';
     });
     _T_list += '</ul></div></li>';
   }
@@ -25,10 +25,19 @@ var testObj = {};
 var renderDetailView = function(place){
   console.log(place);
   testObj = place;
-  var _T_detail =
-  'Name' + place.name +
-  'Rating' + place.rating +
-  'Address' + place.formatted_address;
+  var _T_detail = '';
+
+  _T_detail += 'Name: ' + place.name;
+  _T_detail += ( typeof place.rating != 'undefined' ? 'Rating: ' + place.rating : ' ');
+  _T_detail += 'Address: ' + place.formatted_address;
+
+  if( typeof place.reviews != 'undefined' ){
+    for(var i=0; i<place.reviews.length; i++){
+      _T_detail += 'Rating: ' + place.reviews[i]['rating'] + '<p>' + place.reviews[i]['text'] + '</p>' + 'Reviewed by: ' + place.reviews[i]['author_name'];
+    }
+  }
+
+
   return _T_detail;
 }
 
