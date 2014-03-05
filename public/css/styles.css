@@ -10,9 +10,15 @@
   left: auto; }
 
 .more-info {
-  width: 100px;
-  height: 100px;
-  background: #fff; }
+  width: 30rem;
+  height: 30rem;
+  background: #333;
+  border-radius: 15rem;
+  margin-top: 5rem;
+  font-size: 18rem;
+  color: #eee;
+  position: absolute;
+  right: 30rem; }
 
 #detail {
   font-size: 30rem; }
