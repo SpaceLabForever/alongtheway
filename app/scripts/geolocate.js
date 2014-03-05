@@ -21,12 +21,34 @@ if(navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(function(position) {
     clientLoc = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
-    var infowindow = new google.maps.Marker({
+     var options = {
+      location: {},
+      radius: '500',
+      types: []
+    };
+    nearbySearch(clientLoc, options);
+    console.log("map loaded");
+
+    marker = new google.maps.Marker({
       map: map,
-      position: clientLoc
+      draggable: true,
+      animation: google.maps.Animation.DROP,
+      position: clientLoc,
+      visible: true
+    });
+
+    google.maps.event.addListener(marker, 'click', toggleBounce);
+
+    google.maps.event.addListener(marker, 'click', function(event){
+      console.log("marker clicked!");
+    }, true);
+    //event at the end of a marker drag
+    google.maps.event.addListener(marker, "dragend", function(event) {
+      clientLoc = new google.maps.LatLng(event.latLng.lat(), event.latLng.lng());
     });
 
     map.setCenter(clientLoc);
+
   }, function() {
     handleNoGeolocation(true);
   });
@@ -42,26 +64,6 @@ function initialize() {
 
   map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-  marker = new google.maps.Marker({
-    map: map,
-    draggable: true,
-    animation: google.maps.Animation.DROP,
-    position: clientLoc
-  });
-
-  google.maps.event.addListener(marker, 'click', toggleBounce);
-
-  google.maps.event.addListener(marker, 'click', function(event){
-
-    console.log("marker clicked!");
-  }, true);
-
-  //event at the end of a marker drag
-  google.maps.event.addListener(marker, "dragend", function(event) {
-    var lat = event.latLng.lat();
-    var lng = event.latLng.lng();
-  });
-
 }
 
 function toggleBounce() {
@@ -74,9 +76,6 @@ function toggleBounce() {
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
-window.load = function () {
-    /****
-  Initializing the nearbySearch with the map */
-  console.log("map initialized");
-  nearbySearch(clientLoc, options);
-}
+$(document).ready(function () {
+  initialize();
+});
