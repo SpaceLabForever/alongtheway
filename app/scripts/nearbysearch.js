@@ -49,9 +49,11 @@ function nearbyHandler (data) {
   var names = _(data).pluck('name').map(function (val) {
     return val;
   });
+
   for (var name in names) {
     console.log(names[name]);
   }
+
   refreshView('results', renderListView(), false);
 }
 
