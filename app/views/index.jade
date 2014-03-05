@@ -24,10 +24,9 @@ html(lang='en-US')
   body
     .snap-drawers.line
       .snap-drawer.snap-drawer-left.scrollable
-        nav.mp-level.scroller
-            div.blocker.hidden
+        nav.push-menu.scroller
+            div.back-button.hidden
             ul#results.scroller-inner
-
       .snap-drawer.snap-drawer-right.scrollable
         h2 Queued Locations
         div.line.category.box-effect
@@ -40,7 +39,7 @@ html(lang='en-US')
             //label(for='radius') Radius
             //input#rangeinput.bar(type='range', min='500', max='3000', step='500', value='1', onchange='rangevalue.value=value; options.radius=value')
             //output#rangevalue(for='radius', name='radius') 500
-            button#nearby.button.btn.btn-2.btn-2a.rounded Nearby Search
+            button#nearby.button Nearby Search
       .snap-drawer.snap-drawer-bottom
         #detail
     #content.snap-content.line

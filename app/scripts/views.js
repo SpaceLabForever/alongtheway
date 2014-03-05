@@ -8,7 +8,7 @@ var renderListView = function(){
     _T_list += '<li class="top-level"><input type="radio" name="filterList" id="' + catList[i] + '" />
                 <label for="' + catList[i] + '" data-counter="' + listResults.length + '">' +
                 catList[i] + '</label>';
-    _T_list += '<div class="mp-level"><ul class="sub-menu">';
+    _T_list += '<div class="filter-level"><ul class="sub-menu">';
     _.each(listResults, function(val){
       var prettyName = val['name'].replace(/\s+/g,"");
       _T_list += '<li><input class="switch" type="checkbox" id="' +   prettyName + '" value="' +
@@ -56,36 +56,11 @@ var snapper = new Snap({
 
 snapper.on('start', function(){
   if (!$('body').hasClass('snapjs-left')) {
-    $('nav.mp-level').addClass('out');
+    $('nav.push-menu').addClass('out');
   } else if ($('body').hasClass('snapjs-left')) {
-    $('nav.mp-level').removeClass('out');
+    $('nav.push-menu').removeClass('out');
   }
 });
-
-// if(snapper.state().state == "closed" {
-
-// }
-
-
-
-if ($('input:radio').prop('checked', false)) {
-  console.log('filter checked');
-  $(this).change(function(){
-    $('.mp-level.out').addClass('buried');
-    $('.mp-level .top-level input[type="radio"]:checked ~ .mp-level .sub-menu').addClass('active');
-    $('.block').removeClass('hidden');
-  });
-}
-
-$('input[name=filterList]').change('checked', function() {
-  $('.block').removeClass('hidden');
-});
-
-$('.block').click(function(){
-  $(this).addClass('hidden');
-  //$('input:radio').prop('checked', false);
-});
-
 
 document.getElementById('open-left').addEventListener('click', function(){
   if( snapper.state().state == 'left' ){
@@ -94,5 +69,3 @@ document.getElementById('open-left').addEventListener('click', function(){
     snapper.open('left');
   }
 });
-
-

@@ -26,7 +26,7 @@ function Filter (data) {
     return outputArr;
   };
   return new constructor();
-};
+}
 
 function detailHandler(ref){
   var request = {
@@ -52,28 +52,26 @@ function nearbyHandler (data) {
   for (var name in names) {
     console.log(names[name]);
   }
-  refreshView('results', renderListView(), false)
+  refreshView('results', renderListView(), false);
 }
-
-
 
 function _invokeListListeners(){
   $('.more-info').click(function(){
     var ref = $(this).attr('data-ref');
     detailHandler(ref);
-  })
-}
+  });
 
+/****** Probably a better solution -DAP-  ******/
+  $('.top-level input:radio').change(function() {
+    $('.back-button').removeClass('hidden');
+  });
+
+  $('.back-button').click(function(){
+    $(this).addClass('hidden');
+    $('.top-level input:checked').prop('checked', false);
+  });
+}
 
 $('#nearby').click(function(){
   nearbySearch(clientLoc);
-})
-
-
-
-
-  /*******  Instantiate PushMenu to build out the left-drawer menu system. setTimeout() to ensure that the
-  drawer items from views.js exist before building the menu out. Probably a better solution -DAP-  ******/
-
-
-
+});

@@ -1,4 +1,4 @@
-.mp-level {
+.push-menu, .filter-level {
   position: absolute;
   top: 0;
   left: 0;
@@ -12,7 +12,7 @@
   -webkit-transition: all 0.5s;
 }
 
-.mp-level.out {
+.push-menu.out {
   -webkit-transform: translate3d(0, 0, 0);
   -webkit-transition: all 0.5s;
 }
@@ -38,17 +38,17 @@
   list-style: none;
 }
 
-.mp-level .top-level input[type="radio"] {
+.push-menu .top-level input[type="radio"] {
   opacity: 0;
 }
 
-.mp-level .top-level label {
+.push-menu .top-level label {
   font-size: 20rem;
   font-color: #fff;
   display: block;
 }
 
-.mp-level .top-level label[data-counter] {
+.push-menu .top-level label[data-counter] {
   display: block;
   position: relative;
   font-size: 20rem;
@@ -57,7 +57,7 @@
   padding-left: 55rem;
 }
 
-.mp-level .top-level label[data-counter]::before {
+.push-menu .top-level label[data-counter]::before {
   content: attr(data-counter);
   position: absolute;
   top: -9rem;
@@ -76,12 +76,12 @@
   border-bottom-right-radius: 10rem;
 }
 
-.mp-level .top-level input[type="radio"]:checked label {
+.push-menu .top-level input[type="radio"]:checked label {
   width: 380rem;
   height: 1200rem;
 }
 
-.mp-level .top-level input[type="radio"] ~ .mp-level .sub-menu {
+.push-menu .top-level input[type="radio"] ~ .filter-level .sub-menu {
   height: 100%;
   min-height: 1000rem;
   overflow: hidden;
@@ -89,7 +89,6 @@
   top: 0;
   left: 0;
   width: 300rem;
-  background: #333;
   padding: 20rem;
   list-style: none;
   z-index: 100;
@@ -97,28 +96,28 @@
   -webkit-transition: all 0.5s;
 }
 
-.mp-level .top-level input[type="radio"]:checked ~ .mp-level  {
+.push-menu .top-level input[type="radio"]:checked ~ .filter-level  {
   -webkit-transform: translate3d(0, 0, 0);
   -webkit-transition: all 0.5s;
   width: 280rem;
 }
 
-.mp-level .top-level input[type="radio"]:checked ~ .mp-level .sub-menu {
+.push-menu .top-level input[type="radio"]:checked ~ .filter-level .sub-menu {
   -webkit-transform: translate3d(0, 0, 0);
-  -webkit-transition: all 0.1s 0.3s;
+  -webkit-transition: all 0.15s cubic-bezier(.17,.67,.95,.66) 0.35s ;
 }
 
-.mp-level .sub-menu li {
+.filter-level .sub-menu li {
   font-size: 20rem;
   font-color: #fff;
   padding: 20rem;
 }
 
-.mp-level .sub-menu li input[type="checkbox"] {
+.filter-level .sub-menu li input[type="checkbox"] {
   opacity: 0;
 }
 
-.mp-level .sub-menu li label {
+.filter-level .sub-menu li label {
   padding-left: 0rem;
   display: block
 }
@@ -127,8 +126,8 @@ input[type="checkbox"] {
   position: absolute;
   overflow: hidden;
   clip: rect(0 0 0 0);
-  width: 1px; height:1px;
-  margin: -1px; padding: 0; border: 0;
+  width: 1rem; height:1rem;
+  margin: -1rem; padding: 0; border: 0;
 }
 
 input[type="checkbox"] + label {
@@ -136,21 +135,21 @@ input[type="checkbox"] + label {
    display: inline-block;
    margin-bottom: 1.5%;
    width: auto;
-   min-width: 200px;
+   min-width: 200rem;
     &:before{
       content: "\A";
       color: #ccc;
-      font-size: 42px;
-      line-height: 42px;
+      font-size: 42rem;
+      line-height: 42rem;
       text-align: center;
       display: inline-block;
       vertical-align: middle;
       position:relative;
       background: #999;
-      height:42px;
-      width: 42px;
+      height:42rem;
+      width: 42rem;
       margin-right: 10rem;
-      box-shadow: 1px 1px 0px #999, 0px 0px 1px #333 inset, 0px 0px 56px #333 inset;
+      box-shadow: 1rem 1rem 0rem #999, 0rem 0rem 1rem #333 inset, 0rem 0rem 56rem #333 inset;
   }
 }
 
@@ -159,20 +158,27 @@ input[type="checkbox"]:checked + label {
   &:before{
    content: "✔";
     color: #d2ff52 !important;
-    font-size: 42px;
-    line-height: 42px;
+    font-size: 42rem;
+    line-height: 42rem;
 
   }
 }
-.blocker {
-  background: rgba(0,0,0,.65);
+.back-button {
+  opacity: 1;
+  background: rgba(0,0,0,.5);
+  box-shadow: inset 0rem 0rem 50rem rgba(0,0,0,.85);
   position: absolute;
   z-index: -1;
   top: 0;
   left: 0;
   width: 340rem;
   height: 1200rem;
+  -webkit-transition: all 0.5s;
+  transition: all linear 0.5s;
 }
 .hidden {
+  opacity: 0;
   display:none;
+  -webkit-transition: all 0.5s;
+  transition: all linear 0.5s;
 }
