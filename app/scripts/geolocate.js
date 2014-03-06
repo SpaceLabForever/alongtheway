@@ -24,7 +24,9 @@ if(navigator.geolocation) {
       radius: '500',
       types: []
     };
-    nearbySearch(clientLoc, options);
+    var data = nearbySearch(clientLoc, options);
+    console.log(data);
+    refreshView('results', renderListView(data), false);
     console.log("map loaded");
 
     marker = new google.maps.Marker({

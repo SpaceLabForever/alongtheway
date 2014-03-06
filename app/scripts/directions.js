@@ -25,7 +25,7 @@ function getDirections (origin, dest) {
     var render = new google.maps.DirectionsRenderer();
     render.setMap(map);
     render.setDirections(result);
-    getPOIs(result);
+    nearbyDirectionsSearch(getPOIs(result));
     marker.setVisible(false);
   });
 }
@@ -36,16 +36,19 @@ nearby searches on them, putting the results in the drawer */
 function getPOIs (route) {
   var points = route.routes[0].overview_path,
       numPOIs = points.length / 4,
-      POIs = [];
-  console.log(points);
+      POIs = [],
+      results = [];
+  //console.log(points);
   for (var i = 0; i <= numPOIs; i++) {
     POIs.push(points[Math.floor(Math.random()*points.length)]);
   }
   POIs = _.map(POIs, function (poi) { return getLatLng(poi); });
-  console.log(POIs);
+  //console.log(POIs);
+  return POIs;
 }
 
-/* Run a radius search and return a list of place objects */
+/* Run a radius search and return a list of place objects
+when the client location is received */
 
 function nearbySearch (clientLoc, options) {
   var options = {
@@ -57,9 +60,58 @@ function nearbySearch (clientLoc, options) {
   client = getLatLng(clientLoc);
   options.location = client;
   service.nearbySearch(options, function (results, status) {
-    console.log(results);
-    nearbyHandler(results);
+    //console.log(results);
+    //nearbyHandler(results);
+    refreshView('results', renderListView(results), false);
   });
+}
+
+/* Make multiple nearby searches on an array of points
+and return a data object with the results */
+
+
+
+function nearbyDirectionsSearch (points) {
+
+  var nearbyResults = [];
+  var service = new google.maps.places.PlacesService(map);
+  for (var i = points.length - 1; i >= 0; i--) {
+
+  var options = {
+    location: { },
+    radius: '500',
+    types: []
+  };
+
+    console.log(points[i].d+" "+points[i].e+" at "+i);
+    //options.location = getLatLng(points[i]);
+    options.radius = 500;
+    options.types = [];
+    options.location = getLatLng(points[i]);
+    console.log(options);
+    console.log(options.location);
+
+    service.nearbySearch(options, function (results, status) {
+      console.log('Processing results... at' + i);
+      for (var j = results.length - 1; j >= 0; j--) {
+        var id = results[j].id;
+        var dupe = false;
+        for (var n = nearbyResults.length - 1; n >= 0; n--) {
+          if (nearbyResults[n]) {
+            if (nearbyResults[n].id === id) {
+              dupe = true;
+            }
+          }
+        };
+        if (!dupe) {
+          nearbyResults.push(results[j]);
+        }
+      };
+      //nearbyResults = _.union(nearbyResults, results);
+      console.log(nearbyResults);
+      refreshView('results', renderListView(nearbyResults), false);
+    });
+  };
 }
 
 /* Pluck out the names of a list of place objects and
@@ -71,6 +123,7 @@ function nearbyHandler (data) {
   return _(data).pluck('name').map(function (val) { return val; });
 }
 */
+
 /* Utility function to transform places object into
 LatLng object */
 
