@@ -27,8 +27,8 @@ var renderDetailView = function(place){
   testObj = place;
   var _T_detail = '';
 
-  _T_detail += 'Name: ' + place.name;
-  _T_detail += ( typeof place.rating != 'undefined' ? 'Rating: ' + place.rating : ' ');
+  _T_detail += '<span class="name">' + place.name + '</span>';
+  _T_detail += ( typeof place.rating != 'undefined' ? '<div class="rating">' + '<div class="rating-bar" style="background: #000; width: '+100*place.rating/5+'%"></div></div>': '');
   _T_detail += 'Address: ' + place.formatted_address;
 
   if( typeof place.reviews != 'undefined' ){
