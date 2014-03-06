@@ -1,2 +1,2 @@
-web: node server.ks
+web: node server.js
 worker: node server.js
