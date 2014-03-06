@@ -29,15 +29,19 @@ var renderDetailView = function(place){
   testObj = place;
   var _T_detail = '';
 
-  _T_detail += '<span class="name">' + place.name + '</span>';
+  _T_detail += '<div class="detail"><div class="col1"><span class="name">' + place.name + '</span></div>';
   _T_detail += ( typeof place.rating != 'undefined' ? '<div class="rating">' + '<div class="rating-bar" style="background: #000; width: '+100*place.rating/5+'%"></div></div>': '');
-  _T_detail += 'Address: ' + place.formatted_address;
+  _T_detail += '<div class="col1"><span class="address">' + place.adr_address + '</span></div>';
+  _T_detail += '<div class="col1">';
 
   if( typeof place.reviews != 'undefined' ){
     for(var i=0; i<place.reviews.length; i++){
-      _T_detail += 'Rating: ' + place.reviews[i]['rating'] + '<p>' + place.reviews[i]['text'] + '</p>' + 'Reviewed by: ' + place.reviews[i]['author_name'];
+      _T_detail += '<div class="review">Rating: ' + place.reviews[i]['rating'] + '<p>' + place.reviews[i]['text'] + '</p>' + 'Reviewed by: ' + place.reviews[i]['author_name'] + '</div>';
     }
   }
+
+  _T_detail += '</div>'
+
   return _T_detail;
 }
 

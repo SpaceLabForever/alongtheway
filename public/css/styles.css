@@ -21,7 +21,27 @@
   right: 30rem; }
 
 #detail {
-  font-size: 30rem; }
+  font-size: 18rem;
+  width: 60%;
+  height: 400rem;
+  bottom: 0;
+  left: 50%;
+  margin-left: -30%;
+  background: #333;
+  position: absolute; }
+
+.detail {
+  color: #999;
+  padding: 20rem; }
+
+.col1 {
+  width: 100%; }
+
+.col12 {
+  width: 50%; }
+
+.detail .name {
+  font-size: 48rem; }
 
 /*info-drawer*/
 .snap-drawer-bottom {
