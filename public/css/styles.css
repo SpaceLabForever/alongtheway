@@ -31,15 +31,16 @@
   left: auto; }
 
 .more-info {
+  position: absolute;
+  top: 20rem;
+  right: 20rem;
   width: 30rem;
   height: 30rem;
   background: #333;
   border-radius: 15rem;
   margin-top: 5rem;
   font-size: 18rem;
-  color: #eee;
-  position: absolute;
-  right: 30rem; }
+  color: #eee; }
 
 #detail {
   font-size: 18rem;

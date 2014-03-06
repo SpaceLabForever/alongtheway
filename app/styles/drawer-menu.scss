@@ -5,7 +5,7 @@
   z-index: 1;
   width: 280rem;
   height: 100%;
-  min-height: 1900rem;
+  min-height: 1400rem;
   overflow: hidden;
   background: #666;
   -webkit-transform: translate3d(-120%, 0, 0);
@@ -120,7 +120,8 @@
 
 .filter-level .sub-menu li label {
   padding-left: 0rem;
-  display: block
+  display: block;
+  flot: left;
 }
 
 input[type="checkbox"] {
@@ -163,6 +164,13 @@ input[type="checkbox"]:checked + label {
     line-height: 42rem;
 
   }
+}
+/* Make it a marquee */
+.marquee {
+  width: 150rem;
+  white-space: nowrap;
+  -webkit-marquee: auto medium infinite alternate normal;
+  overflow-x: -webkit-marquee;
 }
 
 .back-button {
