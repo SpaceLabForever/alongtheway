@@ -1,6 +1,8 @@
 'use strict';
 
-var renderListView = function () {
+var renderListView = function (data) {
+  var resultsObj = new Filter(data);
+  console.log(resultsObj.getAllObjects());
   var catList = resultsObj.displayAllCategories();
   var _T_list =  '';
   for (var i in catList) {
