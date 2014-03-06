@@ -1,0 +1,81 @@
+/* General button style (reset) */
+.button {
+  border: none;
+  margin: 0 auto;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: none;
+  cursor: pointer;
+  padding: 25px 80px;
+  display: inline-block;
+  letter-spacing: 1px;
+  font-weight: 700;
+  outline: none;
+  position: relative;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s; }
+
+.button:after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s; }
+
+/* Pseudo elements for icons */
+.button:before {
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  position: relative;
+  -webkit-font-smoothing: antialiased; }
+
+/* Button 2 */
+.button {
+  padding: 20rem;
+  font-size: 20rem;
+  color: #06192e;
+  text-shadow: 1rem 3rem 1rem rgba(0, 0, 0, 0.25);
+  text-align: center;
+  outline: none;
+  border: none;
+  box-shadow: inset 0rem 0rem 10rem rgba(0, 0, 0, 0.15);
+  background: #d2ff52;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #d2ff52 0%, #91e842 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #d2ff52), color-stop(100%, #91e842));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #d2ff52 0%, #91e842 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #d2ff52 0%, #91e842 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #d2ff52 0%, #91e842 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #d2ff52 0%, #91e842 100%);
+  /* W3C */
+  box-shadow: 0 6px #3f8401;
+  -webkit-transition: none;
+  -moz-transition: none;
+  transition: none; }
+
+/* Button 2a */
+.button {
+  border-radius: 3px 3px 5px 5px; }
+
+.button:hover {
+  box-shadow: 0 4px #3f8401;
+  top: 2px; }
+
+.button:active {
+  box-shadow: 0 0 #3f8401;
+  top: 2px; }
+
+#nearby {
+  display: block; }
