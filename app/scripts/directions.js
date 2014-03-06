@@ -53,8 +53,8 @@ function nearbySearch (clientLoc, options) {
       radius: '500',
       types: []
   },
-    service = new google.maps.places.PlacesService(map),
-    client = getLatLng(clientLoc);
+  service = new google.maps.places.PlacesService(map),
+  client = getLatLng(clientLoc);
   options.location = client;
   service.nearbySearch(options, function (results, status) {
     console.log(results);
@@ -63,14 +63,14 @@ function nearbySearch (clientLoc, options) {
 }
 
 /* Pluck out the names of a list of place objects and
-and return a list of names  */
+and return a list of names
 
 function nearbyHandler (data) {
   resultsObj = new Filter(data);
   refreshView('results', renderListView(), false);
   return _(data).pluck('name').map(function (val) { return val; });
 }
-
+*/
 /* Utility function to transform places object into
 LatLng object */
 

@@ -47,13 +47,13 @@ function detailHandler(ref){
 
 function nearbyHandler (data) {
   resultsObj = new Filter(data);
-  console.log(data);
+  //console.log(data);
   var names = _(data).pluck('name').map(function (val) {
     return val;
   });
 
   for (var name in names) {
-    console.log(_.uniq(names[name]));
+    console.log((names[name]));
   }
 
   refreshView('results', renderListView(), false);
