@@ -47,13 +47,13 @@ function detailHandler(ref){
 
 function nearbyHandler (data) {
   resultsObj = new Filter(data);
-  console.log(data);
+  //console.log(data);
   var names = _(data).pluck('name').map(function (val) {
     return val;
   });
 
   for (var name in names) {
-    console.log(_.uniq(names[name]));
+    console.log((names[name]));
   }
 
   refreshView('results', renderListView(), false);
@@ -72,6 +72,7 @@ function _invokeListListeners(){
   });
 
   $('.back-button').click(function(){
+    console.log('back button clicked!');
     $('.top-level > input:radio').prop('checked', false);
     $('.top-level > label').removeClass('fadeOut');
     $(this).addClass('hidden');
@@ -79,39 +80,22 @@ function _invokeListListeners(){
     //refreshList();
   });
 
+  $('.switch:checkbox').click(function() {
+    var category = '[data-category=' + $(this).data('category') + ']';
+    if($(this).is(':checked')){
+      console.log('checked');
+      console.log($(this).data('category'));
+      $(this).closest('li').appendTo('#queued');
+    } else if (!$(this).is(':checked')) {
+              console.log($(this).data('category'));
 
-  var moveLi = function(el) {
-
-    if(!el){
-      $('.switch:checkbox').change(function() {
-        var category = $('[data-category=' + $(this).data('category') + ']');
-        $(this).parent().appendTo('#queued');
-        moveLi($(this));
-        return false;
-      });
-    } else {
-    $(el).unbind('change').change(function() {
-      var category = $('[data-category=' + $(this).data('category') + ']');
-      var moveTo = ('.sub-menu' + category);
-      $(this).parent().appendTo(moveTo);
-       moveLi($(this));
-      return false;
-      });
+      console.log('not checked');
+      $(this).closest('li').appendTo('.sub-menu' + category);
     }
-  };
-  moveLi(null);
-  /*
-  $('.sub-menu .switch').click(function() {
-    console.log($(this));
-    $(this).closest('li').appendTo('#queued');
-  });
 
-  $('#queued .switch').click(function() {
-    console.log($(this).data('category'));
-    var moveTo = $;
-    $(this).closest('li').appendTo(moveTo);
-  });*/
+  });
 }
+
 $('#nearby').click(function(){
   nearbySearch(clientLoc);
 });
