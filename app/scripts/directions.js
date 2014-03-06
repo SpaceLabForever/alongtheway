@@ -66,23 +66,33 @@ function nearbySearch (clientLoc, options) {
   });
 }
 
-/* Make multiple nearby searches on an array of points 
+/* Make multiple nearby searches on an array of points
 and return a data object with the results */
 
+
+
 function nearbyDirectionsSearch (points) {
-  var options = {
-    location: {},
-    radius: '500',
-    types: []
-  };
+
   var nearbyResults = [];
   var service = new google.maps.places.PlacesService(map);
   for (var i = points.length - 1; i >= 0; i--) {
-    console.log(points[i].d);
-    console.log(points[i].e);
+
+  var options = {
+    location: { },
+    radius: '500',
+    types: []
+  };
+
+    console.log(points[i].d+" "+points[i].e+" at "+i);
+    //options.location = getLatLng(points[i]);
+    options.radius = 500;
+    options.types = [];
     options.location = getLatLng(points[i]);
+    console.log(options);
+    console.log(options.location);
+
     service.nearbySearch(options, function (results, status) {
-      console.log('Processing results...');
+      console.log('Processing results... at' + i);
       for (var j = results.length - 1; j >= 0; j--) {
         var id = results[j].id;
         var dupe = false;
