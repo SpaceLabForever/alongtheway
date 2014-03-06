@@ -35,7 +35,7 @@ function detailHandler(ref){
     reference: ref
   };
 
-  service = new google.maps.places.PlacesService(map);
+  var service = new google.maps.places.PlacesService(map);
   service.getDetails(request, callback);
 
   function callback(place, status) {

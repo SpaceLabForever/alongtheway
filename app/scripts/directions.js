@@ -49,9 +49,9 @@ function getPOIs (route) {
 
 function nearbySearch (clientLoc, options) {
   var options = {
-      location: {},
-      radius: '500',
-      types: []
+    location: {},
+    radius: '500',
+    types: []
   },
   service = new google.maps.places.PlacesService(map),
   client = getLatLng(clientLoc);

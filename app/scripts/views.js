@@ -32,12 +32,12 @@ document.getElementById('open-left').addEventListener('click', function(){
   }
 });
 
-var renderListView = function(){
+var renderListView = function () {
   var catList = resultsObj.displayAllCategories();
   var _T_list =  '';
-  for(var i in catList){
+  for (var i in catList) {
     var listResults = resultsObj.getByCategory(catList[i]);
-    var spaceIt = catList[i].split("_").join(" ");
+    var spaceIt = catList[i].split('_').join(' ');
     _T_list += '<li class="top-level ' + catList[i] + '"><input type="radio" name="filterList" id="' + catList[i] + '" />
                 <label class="button" for="' + catList[i] + '" data-counter="' + listResults.length + '">' + spaceIt + '</label>';
     _T_list += '<div class="filter-level"><ul data-category="' + catList[i] + '" class="sub-menu">';
@@ -45,15 +45,17 @@ var renderListView = function(){
       var prettyName = val['name'].replace(/\s+/g,"");
       _T_list += '<li><input class="switch" data-category="' + catList[i] + '" type="checkbox" id="' + catList[i] + "-"
                   +  prettyName + '" value="' + prettyName + '" />' + '<label for="' + catList[i] + "-" + prettyName +'">'
-                  + val['name'] + '</label><button data-ref="' + val['reference']
-                  + '" class="more-info" type="button">i</button></li>';
+                  + val['name'] + '<button data-ref="' + val['reference']
+                  + '" class="more-info" type="button">i</button></li></label>';
     });
     _T_list += '</ul></div></li>';
   }
   return _T_list;
 };
 
-var testObj = {};
+var renderDetailView = function (place) {
+  var testObj = place;
+  var _T_detail = '';
 
 var renderDetailView = function(place){
   console.log(place);
@@ -63,6 +65,20 @@ var renderDetailView = function(place){
   'Rating' + place.rating +
   'Address' + place.formatted_address;
   //return _T_detail;
+  _T_detail += '<div class="detail"><div class="col1"><span class="name">' + place.name + '</span></div>';
+  _T_detail += ( typeof place.rating != 'undefined' ? '<div class="rating">' + '<div class="rating-bar" style="width: '+100*place.rating/5+'%">'+place.rating+'</div></div>': '');
+  _T_detail += '<div class="col1"><span class="address">' + place.adr_address + '</span></div>';
+  _T_detail += '<div class="col1 reviews">';
+
+  if( typeof place.reviews != 'undefined' ){
+    for(var i=0; i<place.reviews.length; i++){
+      _T_detail += '<div class="review"><span class="rating-label">Rating: ' + place.reviews[i]['rating'] + '</span><p>' + place.reviews[i]['text'] + '</p>' + '<span class="reviewer">Reviewed by: ' + place.reviews[i]['author_name'] + '</span></div>';
+    }
+  }
+
+  _T_detail += '</div>'
+
+  return _T_detail;
 }
 
 function refreshView(id, viewOutput, stringify){
