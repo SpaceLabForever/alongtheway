@@ -55,18 +55,10 @@ var renderListView = function (data) {
   return _T_list;
 };
 
-var renderDetailView = function (place) {
-  var testObj = place;
-  var _T_detail = '';
-
 var renderDetailView = function(place){
   console.log(place);
-  testObj = place;
-  var _T_detail =
-  'Name' + place.name +
-  'Rating' + place.rating +
-  'Address' + place.formatted_address;
-  //return _T_detail;
+  var testObj = place;
+  var _T_detail = '';
   _T_detail += '<div class="detail"><div class="col1"><span class="name">' + place.name + '</span></div>';
   _T_detail += ( typeof place.rating != 'undefined' ? '<div class="rating">' + '<div class="rating-bar" style="width: '+100*place.rating/5+'%">'+place.rating+'</div></div>': '');
   _T_detail += '<div class="col1"><span class="address">' + place.adr_address + '</span></div>';
