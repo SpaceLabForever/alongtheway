@@ -1,4 +1,4 @@
-'use strict';
+  'use strict';
 
 
 function _spID(id){
@@ -13,8 +13,6 @@ function _spCL(class){
   return object;
 }
 
-
-
 var map, marker, clientLoc, outputData;
 // Try HTML5 geolocation
 if(navigator.geolocation) {
@@ -26,7 +24,9 @@ if(navigator.geolocation) {
       radius: '500',
       types: []
     };
-    nearbySearch(clientLoc, options);
+    var data = nearbySearch(clientLoc, options);
+    console.log(data);
+    refreshView('results', renderListView(data), false);
     console.log("map loaded");
 
     marker = new google.maps.Marker({
@@ -78,4 +78,11 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 $(document).ready(function () {
   initialize();
+  $('#dest').focus();
+});
+
+$('#dest').keyup(function (e) {
+  if (e.keyCode === 13) {
+    $('#dirs').click();
+  }
 });
