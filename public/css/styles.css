@@ -10,12 +10,38 @@
   left: auto; }
 
 .more-info {
-  width: 100rem;
-  height: 100rem;
-  background: #fff; }
+  width: 30rem;
+  height: 30rem;
+  background: #333;
+  border-radius: 15rem;
+  margin-top: 5rem;
+  font-size: 18rem;
+  color: #eee;
+  position: absolute;
+  right: 30rem; }
 
 #detail {
-  font-size: 30rem; }
+  font-size: 18rem;
+  width: 60%;
+  height: 400rem;
+  bottom: 0;
+  left: 50%;
+  margin-left: -30%;
+  background: #333;
+  position: absolute; }
+
+.detail {
+  color: #999;
+  padding: 20rem; }
+
+.col1 {
+  width: 100%; }
+
+.col12 {
+  width: 50%; }
+
+.detail .name {
+  font-size: 48rem; }
 
 /*info-drawer*/
 .snap-drawer-bottom {
@@ -126,14 +152,14 @@
 #toolbar h1 {
   float: left;
   position: absolute;
-  top: 10rem;
+  top: 17rem;
   left: 100rem;
   border-bottom: 2rem;
-  font-size: 40rem;
+  font-size: 30rem;
   font-weight: 400;
   letter-spacing: 0rem;
-  color: #fff;
-  text-shadow: 0rem 1rem 2rem #dadada; }
+  color: #ACB6BC;
+  text-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.25); }
 
 #open-left {
   display: block;
@@ -180,7 +206,6 @@
 
 /* Where to? */
 .where-to {
-  overflow: hidden;
   position: relative;
   top: 70rem;
   left: 0rem;
@@ -201,9 +226,23 @@
 
 .where-to button {
   position: absolute;
-  top: -10rem;
-  right: 1rem;
+  top: 0;
+  right: 0;
   float: right; }
+
+.button {
+  padding: 20rem;
+  font-size: 20rem;
+  color: #06192e;
+  text-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.25);
+  text-align: center;
+  outline: none;
+  border: none;
+  box-shadow: inset 0rem 0rem 10rem rgba(0, 0, 0, 0.15);
+  background: -ms-linear-gradient(top, #d2ff52 0%, #91e842 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #d2ff52 0%, #91e842 100%);
+  /* W3C */ }
 
 /* Styles for expanding "Search" input in the "Expanding" demo */
 .search {
@@ -241,6 +280,10 @@
   font-size: 24rem;
   font-weight: 400;
   letter-spacing: 1rem;
+  text-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.25); }
+
+.hubPage h1 {
+  font-size: 48rem;
   text-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.25); }
 
 /* main-body */
