@@ -13,8 +13,6 @@ function _spCL(class){
   return object;
 }
 
-
-
 var map, marker, clientLoc, outputData;
 // Try HTML5 geolocation
 if(navigator.geolocation) {
@@ -78,4 +76,11 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 $(document).ready(function () {
   initialize();
+  $('#dest').focus();
+});
+
+$('#dest').keyup(function (e) {
+  if (e.keyCode === 13) {
+    $('#dirs').click();
+  }
 });
