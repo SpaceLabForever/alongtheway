@@ -72,6 +72,7 @@ function _invokeListListeners(){
   });
 
   $('.back-button').click(function(){
+    console.log('back button clicked!');
     $('.top-level > input:radio').prop('checked', false);
     $('.top-level > label').removeClass('fadeOut');
     $(this).addClass('hidden');
@@ -79,21 +80,21 @@ function _invokeListListeners(){
     //refreshList();
   });
 
-    $('.switch:checkbox').click(function() {
-      var category = '[data-category=' + $(this).data('category') + ']';
-      if($(this).is(':checked')){
-        console.log('checked');
-        console.log($(this).data('category'));
-        $(this).closest('li').appendTo('#queued');
-      } else if (!$(this).is(':checked')) {
-                console.log($(this).data('category'));
+  $('.switch:checkbox').click(function() {
+    var category = '[data-category=' + $(this).data('category') + ']';
+    if($(this).is(':checked')){
+      console.log('checked');
+      console.log($(this).data('category'));
+      $(this).closest('li').appendTo('#queued');
+    } else if (!$(this).is(':checked')) {
+              console.log($(this).data('category'));
 
-        console.log('not checked');
-        $(this).closest('li').appendTo('.sub-menu' + category);
-      }
+      console.log('not checked');
+      $(this).closest('li').appendTo('.sub-menu' + category);
+    }
 
-    });
-  }
+  });
+}
 
 $('#nearby').click(function(){
   nearbySearch(clientLoc);
