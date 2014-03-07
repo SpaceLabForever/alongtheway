@@ -39,18 +39,43 @@
   font-size: 18rem;
   color: #eee;
   position: absolute;
-  right: 30rem; }
+  right: 15rem; }
 
 #detail {
   font-size: 18rem;
-  width: 800rem;
-  height: auto;
-  top: 30rem;
-  background: #333;
+  width: 100%;
+  height: 100%;
+  margin-top: 69rem;
   position: absolute;
-  max-width: 100%;
-  left: 50%;
-  margin-left: -400rem; }
+  z-index: 999;
+  background-color: #222;
+  opacity: 1;
+  -ms-transform: translate(0, 0);
+  /* IE 9 */
+  -webkit-transform: translate(0, 0);
+  /* Chrome, Safari, Opera */
+  transform: translate(0, 0);
+  transition-duration: 5s;
+  -webkit-transition-duration: 5s;
+  /* Safari */
+  -ms-transition-duration: 5s;
+  /* Safari */ }
+
+#detail .close {
+  position: absolute;
+  top: 10em;
+  right: 10em;
+  width: 50em;
+  height: 50em;
+  color: #d2ff52; }
+
+#detail.hidden {
+  opacity: 0;
+  -ms-transform: translate(0, -100px);
+  /* IE 9 */
+  -webkit-transform: translate(0, -100px);
+  /* Chrome, Safari, Opera */
+  transform: translate(0, -100px); }
 
 .detail {
   color: #999;
@@ -95,7 +120,7 @@
   color: #fff; }
 
 .detail .review:nth-of-type(odd) {
-  background: #555; }
+  background: #333; }
 
 .detail .review:nth-of-type(even) {
   border-top: 1px solid #666;

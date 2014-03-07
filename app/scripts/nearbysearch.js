@@ -61,6 +61,8 @@ function _invokeListListeners(){
   $('.more-info').click(function(){
     var ref = $(this).attr('data-ref');
     detailHandler(ref);
+    snapper.close();
+    $('#detail').toggleClass('hidden');
   });
 
   /****** Probably a better solution -DAP-  ******/
