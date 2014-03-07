@@ -62,7 +62,7 @@ var renderDetailView = function(place){
   console.log(place);
   var testObj = place;
   var _T_detail = '';
-  _T_detail += '<div class="detail"><div class="col1"><span class="name">' + place.name + '</span></div>';
+  _T_detail += '<div class="close"></div><div class="detail"><div class="col1"><span class="name">' + place.name + '</span></div>';
   _T_detail += ( typeof place.rating != 'undefined' ? '<div class="rating">' + '<div class="rating-bar" style="width: '+100*place.rating/5+'%">'+place.rating+'</div></div>': '');
   _T_detail += '<div class="col1"><span class="address">' + place.adr_address + '</span></div>';
   _T_detail += '<div class="col1 reviews">';

@@ -65,6 +65,10 @@ function _invokeListListeners(){
     $('#detail').toggleClass('hidden');
   });
 
+  $('.close').click(function(){
+    $('#detail').toggleClass('hidden');
+  })
+
   /****** Probably a better solution -DAP-  ******/
   $('.top-level input:radio').change(function() {
     $('.top-level > label').addClass('fadeOut');
