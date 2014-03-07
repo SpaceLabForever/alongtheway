@@ -53,13 +53,28 @@ module.exports = function (grunt) {
         dest: 'public/dist',
         ext: '.min.css'
       }
+    },
+    jshint: {
+      // define the files to lint
+      files: ['app/'],
+      // configure JSHint (documented at http://www.jshint.com/docs/)
+      options: {
+          // more options here if you want to override JSHint defaults
+        globals: {
+          jQuery: true,
+          console: true,
+          module: true
+        }
+      }
     }
   });
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.registerTask('default', ['watch', 'sass']);
   grunt.registerTask('build', ['sass', 'concat', 'uglify']);
+  grunt.registerTask('jshint', ['jshint']);
 };

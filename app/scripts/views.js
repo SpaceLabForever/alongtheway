@@ -40,13 +40,13 @@ var renderListView = function (data) {
   for (var i in catList) {
     var listResults = resultsObj.getByCategory(catList[i]);
     var spaceIt = catList[i].split('_').join(' ');
-    _T_list += '<li class="top-level ' + catList[i] + '"><input type="radio" name="filterList" id="' + catList[i] + '" />
-                <label class="button" for="' + catList[i] + '" data-counter="' + listResults.length + '">' + spaceIt + '</label>';
+    _T_list += '<li class="top-level ' + catList[i] + '"><input type="radio" name="filterList" id="' + catList[i] + '" />' +
+               '<label class="button" for="' + catList[i] + '" data-counter="' + listResults.length + '">' + spaceIt + '</label>';
     _T_list += '<div class="filter-level"><ul data-category="' + catList[i] + '" class="sub-menu">';
     _.each(listResults, function(val){
-      var prettyName = val['name'].replace(/\s+/g,"");
+      var prettyName = val.name.replace(/\s+/g,'');
       _T_list += '<li class="line"><div class="unit"><input class="switch" data-category="' + catList[i] + '" type="checkbox" id="' + catList[i] + '-' +  prettyName + '" value="' + prettyName + '" />' + '<label for="' + catList[i] + '-' + prettyName + '"></label><div class="item-place">' +
-                 val['name'] + '</div><button data-ref="' + val['reference'] + '" class="more-info" type="button">i</button></li>';
+                 val.name + '</div><button data-ref="' + val.reference + '" class="more-info" type="button">i</button></li>';
     });
     _T_list += '</ul></div></li>';
   }
@@ -56,7 +56,7 @@ var renderListView = function (data) {
 var renderDetailView = function (place) {
   var testObj = place;
   var _T_detail = '';
-}
+};
 
 var renderDetailView = function(place){
   console.log(place);
@@ -69,15 +69,15 @@ var renderDetailView = function(place){
 
   if( typeof place.reviews != 'undefined' ){
     for(var i=0; i<place.reviews.length; i++){
-      _T_detail += '<div class="review"><span class="rating-label">Rating: ' + place.reviews[i]['rating'] + '</span><p>' + place.reviews[i]['text'] + '</p>' + '<span class="reviewer">Reviewed by: ' + place.reviews[i]['author_name'] + '</span></div>';
+      _T_detail += '<div class="review"><span class="rating-label">Rating: ' + place.reviews[i].rating + '</span><p>' + place.reviews[i].text + '</p>' + '<span class="reviewer">Reviewed by: ' + place.reviews[i].author_name + '</span></div>';
     }
   }
 
-  _T_detail += '</div>'
+  _T_detail += '</div>';
 
   return _T_detail;
   snapper.close();
-}
+};
 
 function refreshView(id, viewOutput, stringify){
   stringify ? (_spID(id).innerHTML = JSON.stringify(viewOutput)) : (_spID(id).innerHTML = viewOutput);

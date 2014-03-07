@@ -3,7 +3,8 @@
     "google"    : false,
     "describe"  : false,
     "jquery"    : false,
-    "$"         : false
+    "$"         : false,
+    "_"         : false
   },
   "browser"     : true,
   "node"        : true,

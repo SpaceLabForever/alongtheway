@@ -1,3 +1,5 @@
+'use strict';
+
 /* When 'GO' is clicked, get route from the client's
 current location to the destination entered */
 
@@ -51,13 +53,9 @@ function getPOIs (route) {
 when the client location is received */
 
 function nearbySearch (clientLoc, options) {
-  var options = {
-    location: {},
-    radius: '500',
-    types: []
-  },
-  service = new google.maps.places.PlacesService(map),
-  client = getLatLng(clientLoc);
+  var service = new google.maps.places.PlacesService(map),
+      client = getLatLng(clientLoc);
+
   options.location = client;
   service.nearbySearch(options, function (results, status) {
     //console.log(results);
@@ -83,8 +81,6 @@ function nearbyDirectionsSearch (points) {
     types: []
   };
 
-    console.log(points[i].d+" "+points[i].e+" at "+i);
-    //options.location = getLatLng(points[i]);
     options.radius = 500;
     options.types = [];
     options.location = getLatLng(points[i]);
@@ -102,16 +98,14 @@ function nearbyDirectionsSearch (points) {
               dupe = true;
             }
           }
-        };
+        }
         if (!dupe) {
           nearbyResults.push(results[j]);
         }
-      };
-      //nearbyResults = _.union(nearbyResults, results);
-      console.log(nearbyResults);
+      }
       refreshView('results', renderListView(nearbyResults), false);
     });
-  };
+  }
 }
 
 /* Pluck out the names of a list of place objects and

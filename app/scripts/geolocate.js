@@ -1,4 +1,4 @@
-  'use strict';
+'use strict';
 
 
 function _spID(id){
@@ -7,9 +7,9 @@ function _spID(id){
   return object;
 }
 
-function _spCL(class){
+function _spCL(cl){
   var object = {};
-  object = document.getElementsByClassName(class);
+  object = document.getElementsByClassName(cl);
   return object;
 }
 

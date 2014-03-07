@@ -5,29 +5,29 @@ var resultsObj = {};
 var placeResult = {};
 
 function Filter (data) {
-  function constructor() { }
-  constructor.prototype.getAllObjects = function () {
+  function Constructor() { }
+  Constructor.prototype.getAllObjects = function () {
     return data;
   };
-  constructor.prototype.getObject = function (i) {
+  Constructor.prototype.getObject = function (i) {
     return data[i];
   };
-  constructor.prototype.displayAllCategories = function () {
+  Constructor.prototype.displayAllCategories = function () {
     return _.chain(_(data).pluck('types')).flatten().uniq().value();
   };
-  constructor.prototype.getObjectCategories = function (i) {
-    return data[i]['types'];
+  Constructor.prototype.getObjectCategories = function (i) {
+    return data[i].types;
   };
-  constructor.prototype.getByCategory = function (category) {
+  Constructor.prototype.getByCategory = function (category) {
     var outputArr = [];
     for (var i in data){
-      if (_.contains(data[i]['types'], category)) {
+      if (_.contains(data[i].types, category)) {
         outputArr.push(data[i]);
       }
     }
     return outputArr;
   };
-  return new constructor();
+  return new Constructor();
 }
 
 function detailHandler(ref){
@@ -45,18 +45,6 @@ function detailHandler(ref){
   }
 }
 
-// function nearbyHandler (data) {
-//   resultsObj = new Filter(data);
-  //console.log(data);
-  // var names = _(data).pluck('name').map(function (val) {
-  //   return val;
-  // });
-
-  // for (var name in names) {
-  //   console.log((names[name]));
-  // }
-//}
-
 function _invokeListListeners(){
   $('.more-info').click(function(){
     var ref = $(this).attr('data-ref');
@@ -67,7 +55,7 @@ function _invokeListListeners(){
 
   $('.close').click(function(){
     $('#detail').addClass('hidden');
-  })
+  });
 
   /****** Probably a better solution -DAP-  ******/
   $('.top-level input:radio').change(function() {
