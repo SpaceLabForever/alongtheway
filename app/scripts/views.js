@@ -45,15 +45,18 @@ var renderListView = function (data) {
     _T_list += '<div class="filter-level"><ul data-category="' + catList[i] + '" class="sub-menu">';
     _.each(listResults, function(val){
       var prettyName = val['name'].replace(/\s+/g,"");
-      _T_list += '<li><input class="switch" data-category="' + catList[i] + '" type="checkbox" id="' + catList[i] + "-"
-                  +  prettyName + '" value="' + prettyName + '" />' + '<label for="' + catList[i] + "-" + prettyName +'">'
-                  + val['name'] + '<button data-ref="' + val['reference']
-                  + '" class="more-info" type="button">i</button></li></label>';
+      _T_list += '<li class="line"><div class="unit"><input class="switch" data-category="' + catList[i] + '" type="checkbox" id="' + catList[i] + '-' +  prettyName + '" value="' + prettyName + '" />' + '<label for="' + catList[i] + '-' + prettyName + '"></label><div class="item-place">' +
+                 val['name'] + '</div><button data-ref="' + val['reference'] + '" class="more-info" type="button">i</button></li>';
     });
     _T_list += '</ul></div></li>';
   }
   return _T_list;
 };
+
+var renderDetailView = function (place) {
+  var testObj = place;
+  var _T_detail = '';
+}
 
 var renderDetailView = function(place){
   console.log(place);
@@ -73,6 +76,7 @@ var renderDetailView = function(place){
   _T_detail += '</div>'
 
   return _T_detail;
+  snapper.close();
 }
 
 function refreshView(id, viewOutput, stringify){

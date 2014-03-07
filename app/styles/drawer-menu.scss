@@ -5,7 +5,7 @@
   z-index: 1;
   width: 280rem;
   height: 100%;
-  min-height: 1900rem;
+  min-height: 1400rem;
   overflow: hidden;
   background: #666;
   -webkit-transform: translate3d(-120%, 0, 0);
@@ -112,15 +112,33 @@
   font-size: 20rem;
   font-color: #fff;
   margin-bottom: 20rem;
+  position: relative;
 }
 
 .filter-level .sub-menu li input[type="checkbox"] {
   opacity: 0;
 }
 
-.filter-level .sub-menu li label {
+.unit {
+  display: inline;
+  float: left;
+}
+
+.item-place {
+  width: 120rem;
+  position: absolute;
+  top: 0rem;
+  left: 60rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.filter-level .sub-menu div li label {
   padding-left: 0rem;
-  display: block
+  display: inline-block;
+  float: left;
+  position: relative;
 }
 
 input[type="checkbox"] {
@@ -164,6 +182,29 @@ input[type="checkbox"]:checked + label {
 
   }
 }
+/* Make it a marquee */
+.marquee {
+  display: block;
+  width: 153rem;
+  position: absolute;
+  right: 3rem;
+  top: 7rem;
+  margin: 0 auto;
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+  -webkit-animation: marquee 5s linear infinite;
+}
+
+.marquee:hover {
+  -webkit-animation-play-state: paused
+}
+
+/* Make it move */
+@-webkit-keyframes marquee {
+  0%   { text-indent: 27.5rem }
+  100% { text-indent: -105rem }
+}
 
 .back-button {
   position: absolute;
@@ -191,4 +232,17 @@ input[type="checkbox"]:checked + label {
   opacity: 0;
   -webkit-transition: all 0.5s;
   transition: all linear 0.5s;
+}
+
+#queued li {
+  position: relative;
+}
+#queued li .item-place {
+  top: 50rem;
+  left: 80rem;
+}
+
+#queued li .more-info {
+  top: 40rem;
+  right: 10rem;
 }
