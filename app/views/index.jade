@@ -30,7 +30,7 @@ html(lang='en-US')
       .snap-drawer.snap-drawer-right.scrollable
         h2 Queued Locations
         div.line.category.box-effect
-            h3 Food & Drinks
+            h3 Uncheck to send back
         div.line.scroller
         ul.line.scroller-inner#queued
         section.line#options-panel
@@ -40,7 +40,6 @@ html(lang='en-US')
             input#rangeinput.bar(type='range', min='500', max='3000', step='500', value='1', onchange='rangevalue.value=value')
             //input#rangeinput.bar(type='range', min='500', max='3000', step='500', value='1', onchange='rangevalue.value=value; options.radius=value')
             output#rangevalue(for='radius', name='radius') 500
-          button#nearby.button Nearby Search
       //.snap-drawer.snap-drawer-bottom
     #content.snap-content.line
       #toolbar.line
